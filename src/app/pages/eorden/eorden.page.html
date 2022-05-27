@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Editar pedido</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido">
+  <ion-item>
+    <ion-label>Platillo</ion-label>
+    <ion-select [(ngModel)]="platilloSeleccionado" (ionChange)="mostrarIngredientes()">
+      <ion-select-option *ngFor="let platillo of db.PLATILLOS" [value]="platillo">{{platillo.nombrePlatillo}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  
+    <ion-input type="text" placeholder="Nombre del cliente" [(ngModel)]="nombreCliente"></ion-input>
+
+
+  
+  <ion-list>
+    <h4>Ingredientes:</h4>
+    <ion-item *ngFor="let ingrediente of INGREDIENTES; let i = index">
+      <ion-label>{{ingrediente}}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="ingredientesSeleccionados[i]"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+ 
+  <ion-button class="btn-normal" expand="block" (click)="agregarPedido()" >Agregar Platillo</ion-button>
+</div>
+
+  <ion-card  *ngFor="let pedido of db.PEDIDOS">
+    
+    <ion-item color="secundario">
+      <ion-avatar slot="start">
+        <img  [src]="pedido.fotop">
+      </ion-avatar>
+      <ion-card-title>{{ pedido.nombrep}} ${{ pedido.precioPlatillo }}</ion-card-title>
+    </ion-item>
+  
+   <div class="contenido"><h5 >Ingredientes: {{ pedido.ingredientesPedido }}</h5></div>
+      
+  
+    <ion-footer class="btn-card">
+      <ion-row class="center">
+        <ion-col size="4">
+          <ion-button color="poscuro" size="small"  expand="block" (click)="eliminarPedido(pedido.idPedido)">
+          <ion-icon  name="trash"></ion-icon>
+        </ion-button>
+      </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+
+  <div class="contenido">
+    <h1>Total de la orden: ${{db.tt}}</h1>
+  <ion-button class="btn-normal" expand="block" (click)="registrarOrden()">Actualizar orden</ion-button>
+  <ion-button color="poscuro" class="btn-normal" expand="block" (click)="salirOrden()">Salir</ion-button>
+</div>
+</ion-content>

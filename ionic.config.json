@@ -1,0 +1,7 @@
+{
+  "name": "fastfoodroll",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

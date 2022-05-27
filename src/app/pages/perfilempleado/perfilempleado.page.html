@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi perfil</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="roll-empleado"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido">
+  <ion-input  type="password" placeholder="Password"  [(ngModel)]="passwordE"></ion-input>
+ 
+  <ion-input  type="text" placeholder="Nombre"  [(ngModel)]="nombreE"></ion-input>
+
+  <ion-input type="text" placeholder="Apellidos"  [(ngModel)]="apellidosE"></ion-input>
+
+  <ion-input type="text" placeholder="Dirección"  [(ngModel)]="direccionE"></ion-input>
+
+  <ion-input type="number" placeholder="Telefono"  [(ngModel)]="telefonoE"></ion-input>
+  <div class="center"><ion-avatar>
+    <img [src]="fotoE"/>
+  </ion-avatar></div>
+
+  <ion-button class="btn-normal" (click)="tomarFoto()"  expand="block">Tomar foto</ion-button>
+<ion-button  expand="block" (click)="actualizarEmpleado()"> 
+  Actualizar
+</ion-button>
+
+</div>
+
+</ion-content>

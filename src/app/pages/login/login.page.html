@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-title>Fast Food Roll</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="sligero">
+  <ion-img class="imagen-login" src="assets/fondoL.jpg"></ion-img>
+
+  <div class="contenido-login">
+    <h1>Inicio de Sesión</h1>
+    <ion-input type="email"  placeholder="Email" [(ngModel)]="email"></ion-input>
+ 
+    <ion-input type="password"  placeholder="Password" [(ngModel)]="pass"></ion-input>
+ 
+  <ion-button expand="block" (click)="login()" class="btn-normal" >Iniciar sesion</ion-button>
+  <ion-button expand="block"  routerLink="/registro-n" class="btn-normal" color="poscuro">Registrar Negocio</ion-button>
+  <h4>Siguenos en:</h4>
+<div class="iconos-redes">
+  <ion-icon color="facebook" class="iconos-login" name="logo-facebook"></ion-icon>
+  <ion-icon color="danger"  class="iconos-login" name="logo-instagram"></ion-icon>
+  <ion-icon color="primary"  class="iconos-login" name="logo-twitter"></ion-icon>
+  
+</div>
+<h6> ©Copyright 2022</h6>
+  </div>
+
+</ion-content>

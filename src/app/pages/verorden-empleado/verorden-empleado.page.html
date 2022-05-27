@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalle de la orden</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido">
+  
+   <h1>Cliente: {{nombreCliente}}</h1>
+
+ </div>
+
+<ion-card  *ngFor="let pedido of db.PEDIDOS">
+    
+  <ion-item color="secundario">
+    <ion-avatar slot="start">
+      <img  [src]="pedido.fotop">
+    </ion-avatar>
+    <ion-card-title >{{ pedido.nombrep}} ${{ pedido.precioPlatillo }}</ion-card-title>
+  </ion-item>
+
+ <div class="contenido"><h5 >Ingredientes: {{ pedido.ingredientesPedido }}</h5></div>
+    
+</ion-card>
+  <div class="contenido">
+    <h1>Total de la orden: ${{db.tt}}</h1>
+  <ion-button class="btn-normal" expand="block" (click)="registrarOrden()">Entregar orden</ion-button>
+  <ion-button color="poscuro" class="btn-normal" expand="block" (click)="salirOrden()">Salir</ion-button>
+</div>
+</ion-content>
+

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="light"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-title>Platillos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  [scrollEvents]="true" >
+ <div class="contenido">
+   <h1>Platillos del negocio</h1>
+
+   
+   <ion-input *ngIf="bandera==true"  type="text" placeholder="Nombre del platillo" [(ngModel)]="nombreP"></ion-input>
+  
+   
+
+   <ion-input *ngIf="bandera==true"  type="number" placeholder="Precio del platillo" [(ngModel)]="precio"></ion-input>
+
+   
+
+    <ion-input *ngIf="bandera==false"  type="text" placeholder="Nombre del platillo" [(ngModel)]="nombreP"></ion-input>
+  
+    <h4>Lista de ingredientes</h4>
+    
+    <div  *ngFor="let contadori of contador;let i = index">
+      <ion-input [(ngModel)]="ingredientes[i]" type="text" placeholder="Escribe el nombre del Ingrediente"> </ion-input>
+    </div>
+  
+    <div class="center">
+      <ion-button  (click)="agregar()"  >  Agregar </ion-button>
+      <ion-button (click)="eliminar()" color="poscuro"  > Eliminar  </ion-button>  
+    </div>
+   
+ 
+    <ion-input *ngIf="bandera==false" type="number" placeholder="Precio del platillo" [(ngModel)]="precio"></ion-input>
+  
+  <ion-button class="btn-normal" (click)="tomarFoto()" expand="block">Tomar foto</ion-button>
+  <ion-button *ngIf="bandera==false"  class="btn-normal" expand="block"(click)="registrarPlatillo()">Registrar platillo</ion-button>
+  <ion-button  color="secundario"  *ngIf="bandera==true"  expand="block" (click)="actualizarPlatillo()"> 
+    Actualizar
+  </ion-button>
+</div>
+<!-- 
+  <ion-item *ngFor="let platillo of db.PLATILLOS">
+    <ion-avatar slot="start">
+      <img [src]="platillo.fotoPlatillo">
+    </ion-avatar>
+    <ion-label>
+      <h2><strong>{{ platillo.idPlatillo}}.-{{ platillo.nombrePlatillo }}</strong></h2>
+      <p>{{ platillo.ingredientes }}.-{{ platillo.precioPlatillo }}</p>
+    </ion-label>
+    <ion-button  size="small"  expand="block" (click)="eliminarPlatillo(platillo)" color="danger">
+      <ion-icon  name="trash"></ion-icon>
+    </ion-button>
+    <ion-button  size="small"  expand="block" (click)="editarPlatillo(platillo)" color="warning">
+      <ion-icon  name="create-outline"></ion-icon>
+    </ion-button>
+  </ion-item>
+-->
+  <ion-card  *ngFor="let platillo of db.PLATILLOS">
+    <img [src]="platillo.fotoPlatillo">
+    <ion-card-header>
+      <ion-card-title >{{ platillo.nombrePlatillo }} ${{ platillo.precioPlatillo }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content  >
+      <h5>{{ platillo.ingredientes }}</h5>
+    </ion-card-content>
+
+    <ion-footer class="btn-card">
+      <ion-row class="center">
+        <ion-col size="3">
+          <ion-button color="poscuro" size="small"  expand="block" (click)="eliminarPlatillo(platillo)">
+          <ion-icon  name="trash"></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button  color="secundario" size="small"  expand="block" (click)="editarPlatillo(platillo)" >
+          <ion-icon  name="create"></ion-icon>
+        </ion-button>
+      </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+ 
+</ion-content>

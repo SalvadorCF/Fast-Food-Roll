@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="light"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-title>Ventas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido">
+      <h1>Ventas por fecha</h1>
+      <ion-grid >
+       <h3>Desde (02/03/2022):  </h3>
+        <ion-row>
+          <ion-col size="4"><ion-input [(ngModel)]="diaI" type="text" placeholder="Day"></ion-input></ion-col>
+          <ion-col size="4"><ion-input [(ngModel)]="mesI"  type="text" placeholder="Month"></ion-input></ion-col>
+          <ion-col size="4"><ion-input [(ngModel)]="yearI"  type="text" placeholder="Year"></ion-input></ion-col>
+        </ion-row>
+        <h3>Hasta (03/04/2022):  </h3>
+        <ion-row>
+          <ion-col size="4"><ion-input [(ngModel)]="diaF"  type="text" placeholder="Day"></ion-input></ion-col>
+          <ion-col size="4"><ion-input [(ngModel)]="mesF"  type="text" placeholder="Month"></ion-input></ion-col>
+          <ion-col size="4"><ion-input [(ngModel)]="yearF"  type="text" placeholder="Year"></ion-input></ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-button expand="block" (click)="generarReporte()"> Generar reporte</ion-button>
+    
+  </div>
+
+  <div class="print-pdf">
+    <div class="print-wrapper" id="print-wrapper">
+
+      <h1>Ventas</h1> 
+      <h6><strong>Total de las ventas:</strong> ${{db.to}}</h6>
+    <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Chef</th>
+            <th>Fecha</th>
+            <th>Total</th>       
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let orden of db.PEDIDOSVE">
+            <td>{{orden.idOrden}}</td>
+            <td>{{orden.nombreCliente}}</td>
+            <td>{{orden.email}}</td>
+            <td>{{ orden.fecha }}</td>
+            <td>{{ orden.totalOrden }}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table> 
+      <br>
+      <h1>Fast Food Roll </h1> 
+      <br>
+      <br>
+    </div>
+    
+    <ion-button expand="block" color="danger" fill="outline" (click)="createPdf()">
+      View PDF
+    </ion-button>
+  </div>
+
+</ion-content>

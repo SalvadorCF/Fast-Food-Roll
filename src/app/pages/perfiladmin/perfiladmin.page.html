@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="light"></ion-menu-button>   
+    </ion-buttons> 
+    <ion-title>Mi perfil</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contenido">
+    
+     <h1>{{emailN}}</h1>
+    <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+  
+    <ion-input type="text" placeholder="Nombre del negocio" [(ngModel)]="nombreN"></ion-input>
+  
+    <ion-input type="text" placeholder="Direccion" [(ngModel)]="direccionN"></ion-input>
+  
+    <ion-input type="number" placeholder="Telefono" [(ngModel)]="telefonoN"></ion-input>
+  
+    <ion-input type="text" placeholder="Nombre del patrón" [(ngModel)]="nombreP"></ion-input>
+  
+    <ion-input type="text" placeholder="Apellidos del patrón" [(ngModel)]="apellidosP"></ion-input>
+ <div class="center"><ion-avatar>
+      <img [src]="fotoN"/>
+    </ion-avatar></div>
+  <ion-button class="btn-normal"  expand="block" (click)="tomarFoto()">Tomar foto</ion-button>
+  <ion-button class="btn-normal"  expand="block" (click)="actualizarNegocio()">Guardar información</ion-button>
+</div>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="log-out-outline" defaultHref="login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Roll</ion-title>
+    <ion-avatar class="avatar-perfil " slot="end" (click)="irPerfil()">
+      <img [src]="db.perfil.fotoEmpleado "/>
+    </ion-avatar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let orden of db.ORDENES">
+    <ion-item color="secundario">   
+      <ion-card-title class="mayusculas">{{orden.nombreCliente}}</ion-card-title>
+    </ion-item>
+  
+   <div class="contenido"><h6 >Total: {{ orden.totalOrden }}</h6>
+    <h6 >Empleado: {{ orden.email }}</h6>
+    <h6 >Fecha: {{ orden.fecha }}</h6></div>
+      
+    <ion-footer class="btn-card">
+      <ion-row class="center">
+        <ion-col size="4">
+          <ion-button  size="small"  expand="block" (click)="eliminarOrden(orden.idOrden)" color="poscuro">
+            <ion-icon  name="trash"></ion-icon>
+          </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button  size="small"  expand="block" (click)="editarOrden(orden)" color="warning">
+          <ion-icon  name="create-outline"></ion-icon>
+        </ion-button>
+    </ion-col>
+    <ion-col size="4">
+      <ion-button  size="small"  expand="block" (click)="verOrden(orden)" color="principal">
+        <ion-icon name="eye-outline"></ion-icon>
+      </ion-button>
+  </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/orden-empleado" color="poscuro"  >
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

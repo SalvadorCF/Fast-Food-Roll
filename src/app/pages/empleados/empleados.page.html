@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">  
+      <ion-menu-button color="light"></ion-menu-button>   
+    </ion-buttons>  
+    <ion-title>Empleados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+<div class="contenido">
+  <h1>Mis Empleados</h1>
+
+    <ion-input  type="password" placeholder="Password" *ngIf="bandera==true" [(ngModel)]="passwordE"></ion-input>
+ 
+    <ion-input  type="text" placeholder="Nombre" *ngIf="bandera==true" [(ngModel)]="nombreE"></ion-input>
+  
+    <ion-input type="text" placeholder="Apellidos" *ngIf="bandera==true" [(ngModel)]="apellidosE"></ion-input>
+ 
+    <ion-input type="text" placeholder="Dirección" *ngIf="bandera==true" [(ngModel)]="direccionE"></ion-input>
+  
+    <ion-input type="number" placeholder="Telefono" *ngIf="bandera==true" [(ngModel)]="telefonoE"></ion-input>
+  
+  <ion-button *ngIf="bandera==true"  expand="block" (click)="actualizarEmpleado()"> 
+    Actualizar
+  </ion-button>
+ 
+    <ion-input type="email" placeholder="Email" *ngIf="bandera==false" [(ngModel)]="emailE"></ion-input>
+ 
+    <ion-input type="password" placeholder="Password" *ngIf="bandera==false" [(ngModel)]="passwordE"></ion-input>
+ 
+    <ion-input type="text" placeholder="Nombre" *ngIf="bandera==false" [(ngModel)]="nombreE"></ion-input>
+
+    <ion-input type="text" placeholder="Apellidos" *ngIf="bandera==false" [(ngModel)]="apellidosE"></ion-input>
+ 
+    <ion-input type="text" placeholder="Dirección" *ngIf="bandera==false" [(ngModel)]="direccionE"></ion-input>
+ 
+    <ion-input type="number" placeholder="Telefono" *ngIf="bandera==false" [(ngModel)]="telefonoE"></ion-input>
+  
+  <ion-button class="btn-normal" (click)="tomarFoto()"  expand="block">Tomar foto</ion-button>
+  <ion-button class="btn-normal" *ngIf="bandera==false" expand="block"(click)="registrarEmpleado()">Registrar empleado</ion-button>
+</div>
+
+<!--  <ion-item *ngFor="let empleado of db.EMPLEADOS">
+    <ion-avatar slot="start">
+      <img [src]="empleado.fotoEmpleado">
+    </ion-avatar>
+    <ion-label>
+      <h2><strong>{{ empleado.emailEmpleado }}.-{{ empleado.nombreEmpleado }}</strong></h2>
+      <p>{{ empleado.emailNegocio}}</p>
+    </ion-label>
+    <ion-button  size="small"  expand="block" (click)="eliminarEmpleado(empleado)" color="danger">
+      <ion-icon  name="trash"></ion-icon>
+    </ion-button>
+    <ion-button  size="small"  expand="block" (click)="editarEmpleado(empleado)" color="warning">
+      <ion-icon  name="create-outline"></ion-icon>
+    </ion-button>
+  </ion-item>-->
+
+  <ion-card *ngFor="let empleado of db.EMPLEADOS">
+    <ion-item color="secundario">   
+      <ion-avatar slot="start">
+        <img [src]="empleado.fotoEmpleado">
+      </ion-avatar>
+      <ion-card-title>{{empleado.nombreEmpleado}} {{empleado.apellidosEmpleado }}</ion-card-title>
+    </ion-item>
+  
+   <div class="contenido"><h6 >Email:{{ empleado.emailEmpleado }}</h6>
+    <h6 >Domicilio: {{ empleado.direccionEmpleado  }}</h6>
+    <h6 >Telefono: {{ empleado.telefonoEmpleado  }}</h6></div>
+      
+    <ion-footer class="btn-card">
+      <ion-row class="center">
+        <ion-col size="4">
+          <ion-button  size="small"  expand="block" (click)="eliminarEmpleado(empleado)" color="poscuro">
+            <ion-icon  name="trash"></ion-icon>
+          </ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button  size="small"  expand="block" (click)="editarEmpleado(empleado)" color="secundario">
+          <ion-icon  name="create-outline"></ion-icon>
+        </ion-button>
+    </ion-col>
+      </ion-row>
+    </ion-footer>
+  </ion-card>
+
+</ion-content>
